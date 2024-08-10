@@ -1,30 +1,28 @@
-import { useState, useEffect } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { multiply } from 'react-native-ml-component-library';
+import Button from '../../src/Button/Button';
 
 export default function App() {
-  const [result, setResult] = useState<number | undefined>();
+	const handleButtonPress = () => {
 
-  useEffect(() => {
-    multiply(3, 7).then(setResult);
-  }, []);
-
-  return (
-    <View style={styles.container}>
-      <Text>Result: {result}</Text>
-    </View>
-  );
+	}
+	return (
+		<View style={styles.container}>
+			<Text>Buttons</Text>
+			<Text>Filled and Small</Text>
+			<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} label={'Hello World'} ><Text>HELLO WORLD</Text></Button>
+		</View>
+	);
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
-  },
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+	},
+	box: {
+		width: 60,
+		height: 60,
+		marginVertical: 20,
+	},
 });
