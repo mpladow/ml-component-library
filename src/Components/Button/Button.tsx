@@ -1,19 +1,30 @@
 import {
 	Pressable,
-	Text,
-	View,
+	StyleSheet,
 	type PressableProps,
 } from 'react-native';
-import { useTheme } from '../../theming';
+import { borderRadius, useTheme } from '../../theming';
 import { useMemo } from 'react';
+import ThemedText from '../ThemedText/ThemedText';
+import { shadeColor } from '../../utils/colors';
+
+export type PressableState = Readonly<{
+	pressed: boolean;
+	hovered?: boolean;
+	focused?: boolean;
+}>;
 
 type ButtonProps = {
-	disabled: boolean;
+	disabled?: boolean;
 	type: "primary" | "secondary" | "tertiary" | "danger"
 	variant: 'filled' | 'outlined' | 'text';
+	/**
+	 * shows loading indicator when loading
+	 */
+	loading?: boolean;
 	size: 'sm' | 'md' | 'lg';
 	onPress: () => void;
-	label: string;
+	// label?: string | React.JSX.Element;
 } & PressableProps;
 
 const Button = ({
@@ -23,10 +34,9 @@ const Button = ({
 	size,
 	children,
 	onPress,
-	label,
 	...rest
 }: ButtonProps) => {
-	const { theme } = useTheme();
+	const { currentTheme } = useTheme();
 
 	const setButtonSize = () => {
 		switch (size) {
@@ -45,13 +55,13 @@ const Button = ({
 	const variantType = useMemo(() => {
 		switch (type) {
 			case "primary":
-				return { backgroundColor: theme.primary.dark, textColor: theme.text.default }
+				return { backgroundColor: currentTheme.primary.dark, textColor: currentTheme.text.inverted }
 			case "secondary":
-				return { backgroundColor: theme.primary.light, textColor: theme.text.default }
+				return { backgroundColor: currentTheme.primary.light, textColor: currentTheme.text.default }
 			case "danger":
-				return { backgroundColor: theme.system.infoRed, textColor: theme.text.default }
+				return { backgroundColor: currentTheme.system.infoRed, textColor: currentTheme.text.default }
 			default:
-				return { backgroundColor: theme.primary.dark, textColor: theme.text.default }
+				return { backgroundColor: currentTheme.primary.dark, textColor: currentTheme.text.default }
 		}
 	}, [variant])
 
@@ -60,22 +70,29 @@ const Button = ({
 	};
 
 	return (
-		<Pressable onPress={handlePress} {...rest}>
-			<View
-				style={[
-					setButtonSize(),
-					{ backgroundColor: variantType.backgroundColor },
-					{
-						borderRadius: 16,
-						borderWidth: 2,
-						borderColor: variantType.backgroundColor,
-					},
-				]}
-			>
-				<Text style={{ color: variantType.textColor }}>{label}</Text>
-			</View>
-		</Pressable>
+		<Pressable {...rest} onPress={handlePress} style={(state) => [
+			setButtonSize(),
+			{ backgroundColor: state.pressed && !disabled ? shadeColor(variantType.backgroundColor, 20) : variantType.backgroundColor },
+			disabled && { opacity: 0.5, cursor: "auto" },
+			{ borderRadius: borderRadius, borderWidth: 2 },
+			{
+				borderColor: state.pressed && !disabled ? shadeColor(variantType.backgroundColor, 20) : variantType.backgroundColor,
+			},
+		]} >
+			{
+				typeof children == "string" ?
+					<ThemedText.Text style={{ color: variantType.textColor }} numberOfLines={1}>{children}</ThemedText.Text>
+					:
+					children
+			}
+		</Pressable >
 	);
 };
 
 export default Button;
+
+const style = StyleSheet.create({
+	defaultStyling: {
+
+	}
+})

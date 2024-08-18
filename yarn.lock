@@ -2006,6 +2006,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo-google-fonts/montserrat@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@expo-google-fonts/montserrat@npm:0.2.3"
+  checksum: 23bf018ac9e5292d54a57df97c4c0f3546e7c1521e9e4ae6414147e7051e97633e45a683630263cd4897a0d47c6b6ccb9df06b133280930db641757e3b3fecaa
+  languageName: node
+  linkType: hard
+
+"@expo-google-fonts/open-sans@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "@expo-google-fonts/open-sans@npm:0.2.3"
+  checksum: 75787b986f6545a421b2377cadc7d3b5380ae3421f3617fc61614551e1fe64c4846f4a81e863310b0babbb053a5761bd127043b639d8251bcbb593f518e5a268
+  languageName: node
+  linkType: hard
+
 "@expo/bunyan@npm:^4.0.0":
   version: 4.0.1
   resolution: "@expo/bunyan@npm:4.0.1"
@@ -7126,7 +7140,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-font@npm:~12.0.9":
+"expo-font@npm:^12.0.9, expo-font@npm:~12.0.9":
   version: 12.0.9
   resolution: "expo-font@npm:12.0.9"
   dependencies:
@@ -12550,6 +12564,8 @@ __metadata:
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
+    "@expo-google-fonts/montserrat": ^0.2.3
+    "@expo-google-fonts/open-sans": ^0.2.3
     "@react-native/eslint-config": ^0.73.1
     "@release-it/conventional-changelog": ^5.0.0
     "@types/jest": ^29.5.5
@@ -12559,6 +12575,7 @@ __metadata:
     eslint: ^8.51.0
     eslint-config-prettier: ^9.1.0
     eslint-plugin-prettier: ^5.2.1
+    expo-font: ^12.0.9
     jest: ^29.7.0
     prettier: 3.3.3
     react: 18.2.0

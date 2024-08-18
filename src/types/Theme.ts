@@ -1,4 +1,12 @@
+import type { fontConfig } from './fontConfig';
+
 export type Theme = {
+	themeConfigs: ThemeConfig[],
+	fonts: fontConfig[];
+}
+
+export type ThemeConfig = {
+	name: string,
 	isDark: boolean,
 	primary: {
 		dark: string;
@@ -24,5 +32,5 @@ export type Theme = {
 		default: string;
 		inverted: string;
 		disabled: string;
-	}
+	},
 }
