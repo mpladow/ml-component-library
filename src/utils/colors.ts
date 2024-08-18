@@ -1,4 +1,5 @@
-export const shadeColor = (color, percent) => {
+//@ts-nocheck
+export const shadeColor = (color: any, percent: any) => {
 
 	var R = parseInt(color.substring(1, 3), 16);
 	var G = parseInt(color.substring(3, 5), 16);

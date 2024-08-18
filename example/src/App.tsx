@@ -1,11 +1,11 @@
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import Button from '../../src/Components/Button/Button';
 import { padding, ThemeProvider } from "../../src/theming/index";
 import { useFonts } from 'expo-font';
 import { Montserrat_400Regular, Montserrat_400Regular_Italic, Montserrat_600SemiBold, Montserrat_600SemiBold_Italic, Montserrat_700Bold, Montserrat_700Bold_Italic } from '@expo-google-fonts/montserrat';
 import { OpenSans_400Regular, OpenSans_400Regular_Italic, OpenSans_600SemiBold, OpenSans_600SemiBold_Italic, OpenSans_700Bold, OpenSans_700Bold_Italic } from '@expo-google-fonts/open-sans';
 import type { fontConfig } from '../../src/types/fontConfig';
-import { gptTheme, gptThemeLight } from '../../src/presetThemes/gptHeme';
+import { gptTheme } from '../../src/presetThemes/gptHeme';
 import ThemedText from '../../src/Components/ThemedText/ThemedText';
 import Container from "../../src/Components/Container/Container"
 import type { PropsWithChildren } from 'react';
