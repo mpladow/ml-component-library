@@ -1,32 +1,36 @@
-export const gptThemeDark = {
+import type { Theme, ThemeConfig } from '../types'
+
+export const gptThemeDark: ThemeConfig = {
+	name: "gptDarkTheme",
 	"isDark": true,
 	"primary": {
-		"dark": "#003366",     // Example hex code for dark primary color
-		"light": "#66ccff"     // Example hex code for light primary color
+		"dark": "#003366", // Example hex code for dark primary color
+		"light": "#66ccff" // Example hex code for light primary color
 	},
 	"secondary": {
-		"dark": "#660000",     // Example hex code for dark secondary color
-		"light": "#ff9999"     // Example hex code for light secondary color
+		"dark": "#660000", // Example hex code for dark secondary color
+		"light": "#ff9999" // Example hex code for light secondary color
 	},
 	"system": {
-		"infoRed": "#ff0000",          // Example hex code for info red
-		"infoLightRed": "#ffcccc",     // Example hex code for info light red
-		"infoBlue": "#0000ff",         // Example hex code for info blue
-		"infoLightBlue": "#99ccff",    // Example hex code for info light blue
-		"genericDarkGray": "#333333",  // Example hex code for generic dark gray
+		"infoRed": "#ff0000", // Example hex code for info red
+		"infoLightRed": "#ffcccc", // Example hex code for info light red
+		"infoBlue": "#0000ff", // Example hex code for info blue
+		"infoLightBlue": "#99ccff", // Example hex code for info light blue
+		"genericDarkGray": "#333333", // Example hex code for generic dark gray
 		"genericLightGray": "#cccccc", // Example hex code for generic light gray
-		"infoGreen": "#00ff00",        // Example hex code for info green
-		"infoLightGreen": "#ccffcc",   // Example hex code for info light green
-		"infoYellow": "#ffff00",       // Example hex code for info yellow
-		"infoLightYellow": "#ffffcc"   // Example hex code for info light yellow
+		"infoGreen": "#00ff00", // Example hex code for info green
+		"infoLightGreen": "#ccffcc", // Example hex code for info light green
+		"infoYellow": "#ffff00", // Example hex code for info yellow
+		"infoLightYellow": "#ffffcc" // Example hex code for info light yellow
 	},
 	"text": {
-		"default": "#ffffff",      // Example hex code for default text color
-		"inverted": "#333333",      // Example hex code for default text color
-		"disabled": "#888888"      // Example hex code for disabled text color
-	}
+		"default": "#ffffff", // Example hex code for default text color
+		"inverted": "#333333", // Example hex code for default text color
+		"disabled": "#888888" // Example hex code for disabled text color
+	},
 }
-export const gptThemeLight = {
+export const gptThemeLight: ThemeConfig = {
+	name: "gptDarkTheme",
 	"isDark": false,
 	"primary": {
 		"dark": "#00274d",     // Example hex code for dark primary color
@@ -52,5 +56,10 @@ export const gptThemeLight = {
 		"default": "#333333",      // Example hex code for default text color
 		"inverted": "#ffffff",      // Example hex code for default text color
 		"disabled": "#7f8c8d"      // Example hex code for disabled text color
-	}
+	},
+}
+
+export const gptTheme: Theme = {
+	themeConfigs: [gptThemeDark, gptThemeLight],
+	fonts: []
 }
