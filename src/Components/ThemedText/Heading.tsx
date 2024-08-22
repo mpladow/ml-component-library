@@ -12,38 +12,12 @@ type HeadingProps = {
 	headingSize: "h1" | "h2" | "h3",
 	color?: string;
 } & TextProps
+
+
+/**
+ * A Styled Text component that uses the heading font family.
+ */
 const Heading = ({ headingSize, italic, children, ...rest }: HeadingProps) => {
-	// const { currentFontFamilies } = useInternalTheme();
-	// const headingStyles = useMemo(() => {
-	// 	switch (headingSize) {
-	// 		case "h1":
-	// 			return {
-	// 				weight: 'bold',
-	// 				sizing: TypopgraphySize.textLarge,
-	// 				fontFamily: currentFontFamilies.find(x => x.type == "heading")?.bold
-	// 			}
-	// 		case "h2":
-	// 			return {
-	// 				weight: 'bold',
-	// 				sizing: TypopgraphySize.textMedium,
-	// 				fontFamily: currentFontFamilies.find(x => x.type == "heading")?.bold
-	// 			}
-	// 		case "h3":
-	// 			return {
-	// 				weight: 'semibold',
-	// 				sizing: TypopgraphySize.textMedium,
-	// 				fontFamily: currentFontFamilies.find(x => x.type == "heading")?.medium
-	// 			}
-	// 		default:
-	// 			return {
-	// 				weight: 'bold',
-	// 				sizing: TypopgraphySize.textLarge,
-	// 				fontFamily: currentFontFamilies.find(x => x.type == "heading")
-	// 			}
-	// 	}
-	// }, [headingSize])
-
-
 	const sizing = useMemo(() => {
 		switch (headingSize) {
 			case "h1":

@@ -1,18 +1,22 @@
 export const TypopgraphySize = {
+	textMicro: {
+		fontSize: 8,
+		lineHeight: 10
+	},
 	textXSmall: {
 		fontSize: 12,
 		lineHeight: 15
 	},
 	textSmall: {
-		fontSize: 16,
-		lineHeight: 20
+		fontSize: 14,
+		lineHeight: 18
 	},
 	textMedium: {
 		fontSize: 20,
 		lineHeight: 25
 	},
 	textLarge: {
-		fontSize: 24,
+		fontSize: 28,
 		lineHeight: 30
 	}
 }

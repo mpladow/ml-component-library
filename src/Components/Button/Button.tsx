@@ -81,7 +81,7 @@ const Button = ({
 		]} >
 			{
 				typeof children == "string" ?
-					<ThemedText.Text style={{ color: variantType.textColor }} numberOfLines={1}>{children}</ThemedText.Text>
+					<ThemedText.Text style={{ color: variantType.textColor, textAlign: "center" }} numberOfLines={1}>{children}</ThemedText.Text>
 					:
 					children
 			}
