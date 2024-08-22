@@ -8,6 +8,7 @@ import type { fontConfig } from '../../src/types/fontConfig';
 import { gptTheme } from '../../src/presetThemes/gptHeme';
 import ThemedText from '../../src/Components/ThemedText/ThemedText';
 import Container from "../../src/Components/Container/Container"
+import ThemedTextInput from "../../src/Components/ThemedTextInput/ThemedTextInput";
 import type { PropsWithChildren } from 'react';
 
 
@@ -70,32 +71,48 @@ export default function App() {
 		<ThemeProvider defaultTheme={lightThemeCustom}>
 			<Container isScrollable={true}>
 				<View style={styles.container}>
+					<View style={{ marginBottom: padding }}>
+						<ThemedText.Heading headingSize="h1">Buttons Section</ThemedText.Heading>
+						<ThemedText.Paragraph>Default</ThemedText.Paragraph>
+						<ButtonContainer>
+							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={'primary'} >
+								Primary
+							</Button>
+						</ButtonContainer>
+						<ButtonContainer>
+							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={"secondary"} >
+								Secondary
+							</Button>
+						</ButtonContainer>
+						<ButtonContainer>
+							<Button disabled={true} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={"secondary"} >
+								Disabled
+							</Button>
+						</ButtonContainer>
+						<ButtonContainer>
+							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type="secondary"><ThemedText.Text>Button with a jsx element inside</ThemedText.Text></Button>
+						</ButtonContainer>
+					</View>
+					<View style={{ marginBottom: padding }}>
+						<ThemedText.Heading headingSize="h1">Typography</ThemedText.Heading>
+						<ThemedText.Heading headingSize="h2">Heading 2</ThemedText.Heading>
+						<ThemedText.Heading headingSize="h3">Heading 3</ThemedText.Heading>
 
-					<ThemedText.Heading headingSize="h1">Buttons Section</ThemedText.Heading>
-					<ThemedText.Paragraph>Default</ThemedText.Paragraph>
-					<ButtonContainer>
-						<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={'primary'} >
-							Primary
-						</Button>
-					</ButtonContainer>
-					<ButtonContainer>
-						<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={"secondary"} >
-							Secondary
-						</Button>
-					</ButtonContainer>
-					<ButtonContainer>
-						<Button disabled={true} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={"secondary"} >
-							Disabled
-						</Button>
-					</ButtonContainer>
-					<ButtonContainer>
-						<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type="secondary"><ThemedText.Text>Button with a jsx element inside</ThemedText.Text></Button>
-					</ButtonContainer>
+						<ThemedText.Text weight="semibold" size="xs">Text and Spans XS</ThemedText.Text>
+						<ThemedText.Text weight="semibold">Text and Spans</ThemedText.Text>
+						<ThemedText.Text weight="bold">Text and Spans</ThemedText.Text>
+						<ThemedText.Text weight="bold" italic={true}>Text and Spans</ThemedText.Text>
 
-					<ThemedText.Heading headingSize="h1">Typography</ThemedText.Heading>
+						<ThemedText.Text>This is also a span. There is no spacing between this and the above content</ThemedText.Text>
 
-
-					<ThemedText.Paragraph>Filled and Small</ThemedText.Paragraph>
+						<ThemedText.Paragraph>This is a paragraph</ThemedText.Paragraph>
+						<ThemedText.Paragraph>This is an additional paragraph underneath. Note the spacing between this and the above text.</ThemedText.Paragraph>
+					</View>
+					<View style={{ marginBottom: padding }}>
+						<ThemedText.Heading headingSize="h1">Inputs</ThemedText.Heading>
+						<ThemedTextInput label="Test" />
+						<ThemedTextInput label="Test" isRequired={true} />
+					</View>
 				</View>
 
 			</Container>
