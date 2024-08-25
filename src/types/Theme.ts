@@ -27,6 +27,7 @@ export type ThemeConfig = {
 		infoLightGreen: string;
 		infoYellow: string;
 		infoLightYellow: string;
+		background: string;
 	},
 	text: {
 		default: string;
