@@ -21,7 +21,9 @@ export const gptThemeDark: ThemeConfig = {
 		"infoGreen": "#00ff00", // Example hex code for info green
 		"infoLightGreen": "#ccffcc", // Example hex code for info light green
 		"infoYellow": "#ffff00", // Example hex code for info yellow
-		"infoLightYellow": "#ffffcc" // Example hex code for info light yellow
+		"infoLightYellow": "#ffffcc", // Example hex code for info light yellow
+		"background": "#000000"
+
 	},
 	"text": {
 		"default": "#ffffff", // Example hex code for default text color
@@ -50,7 +52,8 @@ export const gptThemeLight: ThemeConfig = {
 		"infoGreen": "#2ecc71",        // Example hex code for info green
 		"infoLightGreen": "#a9dfbf",   // Example hex code for info light green
 		"infoYellow": "#f1c40f",       // Example hex code for info yellow
-		"infoLightYellow": "#f7f9e9"   // Example hex code for info light yellow
+		"infoLightYellow": "#f7f9e9",   // Example hex code for info light yellow
+		"background": "#dddddd"
 	},
 	"text": {
 		"default": "#333333",      // Example hex code for default text color

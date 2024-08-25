@@ -8,8 +8,12 @@ import type { fontConfig } from '../../src/types/fontConfig';
 import { gptTheme } from '../../src/presetThemes/gptHeme';
 import ThemedText from '../../src/Components/ThemedText/ThemedText';
 import Container from "../../src/Components/Container/Container"
+import { Wrapper } from "../../src/Components/index"
+
+import PageContainer from "../../src/Components/Container/PageContainer";
 import ThemedTextInput from "../../src/Components/ThemedTextInput/ThemedTextInput";
 import type { PropsWithChildren } from 'react';
+import Navbar from '../../src/Components/Navbar/Navbar';
 
 
 export default function App() {
@@ -69,16 +73,31 @@ export default function App() {
 
 	return (
 		<ThemeProvider defaultTheme={lightThemeCustom}>
-			<Container isScrollable={true}>
-				<View style={styles.container}>
-					<View style={{ marginBottom: padding }}>
-						<ThemedText.Heading headingSize="h1">Buttons Section</ThemedText.Heading>
-						<ThemedText.Paragraph>Default</ThemedText.Paragraph>
+			<View style={{ flex: 1 }} >
+				<Navbar height={'sm'}></Navbar>
+
+				<PageContainer isScrollable={true}>
+					<Wrapper defaultDirection={"column"}>
+
+						<Container style={{ flex: 1 }}>
+							<ThemedText.Heading headingSize="h1">Container One</ThemedText.Heading>
+							<ThemedText.Paragraph>This is some content</ThemedText.Paragraph>
+						</Container>
+						<Container style={{ flex: 1 }}>
+							<ThemedText.Heading headingSize="h1">Container One</ThemedText.Heading>
+							<ThemedText.Paragraph>This is some content</ThemedText.Paragraph>
+
+						</Container>
+					</Wrapper>
+					<ThemedText.Heading headingSize="h1">Buttons Section</ThemedText.Heading>
+					<ThemedText.Paragraph>Default</ThemedText.Paragraph>
+					<Container style={{ marginBottom: padding }} alignment='centered' >
 						<ButtonContainer>
 							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={'primary'} >
 								Primary
 							</Button>
 						</ButtonContainer>
+
 						<ButtonContainer>
 							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type={"secondary"} >
 								Secondary
@@ -92,8 +111,9 @@ export default function App() {
 						<ButtonContainer>
 							<Button disabled={false} variant={'filled'} size={'sm'} onPress={handleButtonPress} type="secondary"><ThemedText.Text>Button with a jsx element inside</ThemedText.Text></Button>
 						</ButtonContainer>
-					</View>
-					<View style={{ marginBottom: padding }}>
+
+					</Container>
+					<Container style={{ marginBottom: padding }}>
 						<ThemedText.Heading headingSize="h1">Typography</ThemedText.Heading>
 						<ThemedText.Heading headingSize="h2">Heading 2</ThemedText.Heading>
 						<ThemedText.Heading headingSize="h3">Heading 3</ThemedText.Heading>
@@ -107,15 +127,15 @@ export default function App() {
 
 						<ThemedText.Paragraph>This is a paragraph</ThemedText.Paragraph>
 						<ThemedText.Paragraph>This is an additional paragraph underneath. Note the spacing between this and the above text.</ThemedText.Paragraph>
-					</View>
+					</Container>
 					<View style={{ marginBottom: padding }}>
 						<ThemedText.Heading headingSize="h1">Inputs</ThemedText.Heading>
 						<ThemedTextInput label="Test" />
 						<ThemedTextInput label="Test" isRequired={true} />
 					</View>
-				</View>
 
-			</Container>
+				</PageContainer>
+			</View>
 		</ThemeProvider >
 	);
 }
