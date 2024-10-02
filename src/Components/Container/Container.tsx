@@ -1,7 +1,8 @@
 import { useEffect, useMemo } from 'react';
-import { ScrollView, StyleSheet, Text, View, type StyleProp, type ViewProps, type ViewStyle } from 'react-native'
+import { Animated as RNAnimated, ScrollView, StyleSheet, Text, View, type StyleProp, type ViewProps, type ViewStyle } from 'react-native'
 import { useCustomMediaQuery } from '../../hooks';
 import { padding } from '../../theming';
+import type { ScrollViewProps } from 'react-native/types';
 
 export type ContainerProps = {
 	isScrollable?: boolean;
@@ -11,21 +12,41 @@ export type ContainerProps = {
 	removePaddingY?: boolean;
 	removePaddingX?: boolean;
 	alignment?: "centered" | "left" | "right"
-} & ViewProps
-const Container = ({ isScrollable = false, contentContainerStyle, removePaddingY, removePaddingX, alignment, noPadding, children, style, }: ContainerProps) => {
+	containersInRow: 1 | 2 | 3,
+} & ViewProps & ScrollViewProps
+const Container = ({ isScrollable = false, contentContainerStyle, removePaddingY, removePaddingX, alignment, noPadding, children, style, containersInRow, ...rest }: ContainerProps) => {
 	const size = useCustomMediaQuery();
 	useEffect(() => {
 	}, [size])
 
 	const width = useMemo(() => {
 		console.log(size, "X")
-		if (size.isSmallDevice || size.isMediumDevice)
+		if (size.isSmallDevice)
 			return "100%"
+		if (size.isMediumDevice)
+			switch (containersInRow) {
+				case 1:
+					return "100%"
+				case 2:
+					return "50%"
+				case 3:
+					return "33.3%"
+				default:
+					break;
+			}
 
 		if (size.isLargeDevice || size.isExtraLargeDevice)
-			return "75%"
-
-		return "20%"
+			switch (containersInRow) {
+				case 1:
+					return "100%"
+				case 2:
+					return "50%"
+				case 3:
+					return "33.3%"
+				default:
+					break;
+			}
+		return "75%"
 	}, [size])
 
 	const setAlignment = useMemo(() => {
@@ -57,11 +78,11 @@ const Container = ({ isScrollable = false, contentContainerStyle, removePaddingY
 	}, [size])
 
 	return (
-		isScrollable ? <ScrollView contentContainerStyle={[!noPadding && { padding: mediaQuerySizing.padding }, removePaddingY && { paddingVertical: 0 }, removePaddingX && { paddingHorizontal: 0 }, contentContainerStyle]}
+		isScrollable ? <RNAnimated.ScrollView contentContainerStyle={[!noPadding && { padding: mediaQuerySizing.padding }, removePaddingY && { paddingVertical: 0 }, removePaddingX && { paddingHorizontal: 0 }, contentContainerStyle]}
 			keyboardShouldPersistTaps="always"
 			alwaysBounceVertical={false}
 			showsVerticalScrollIndicator={false}
-			style={[{ flex: 1 }, alignment && setAlignment, style]}>{children}</ScrollView> : <View style={[{ width: width }, !noPadding && { padding: mediaQuerySizing.padding }, removePaddingY && { paddingVertical: 0 }, removePaddingX && { paddingHorizontal: 0 }, alignment && setAlignment, style]}>{children}</View >
+			style={[{ flex: 1 }, alignment && setAlignment, style]} onScroll={rest.onScroll}>{children}</RNAnimated.ScrollView> : <View style={[{ width: width }, !noPadding && { padding: mediaQuerySizing.padding }, removePaddingY && { paddingVertical: 0 }, removePaddingX && { paddingHorizontal: 0 }, alignment && setAlignment, style]}>{children}</View >
 	)
 }
 

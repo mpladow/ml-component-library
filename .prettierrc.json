@@ -1,6 +1,24 @@
 {
-  "trailingComma": "es5",
-  "tabWidth": 4,
-  "semi": false,
-  "singleQuote": true
+  "arrowParens": "avoid",
+  "bracketSameLine": true,
+  "bracketSpacing": false,
+  "requirePragma": true,
+  "singleQuote": true,
+  "printWidth": 120,
+  "trailingComma": "all",
+  "endOfLine": "lf",
+  "overrides": [
+    {
+      "files": ["*.code-workspace"],
+      "options": {
+        "parser": "json"
+      }
+    },
+    {
+      "files": ["*.js", "*.js.flow"],
+      "options": {
+        "parser": "hermes"
+      }
+    }
+  ]
 }
